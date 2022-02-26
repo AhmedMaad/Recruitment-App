@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Work/Freelance/Recruitment/Recruitment App/app/src/main/res/layout/activity_forgot_password.xml" value="0.1921875" />
+        <entry key="..\:/Work/Freelance/Recruitment/Recruitment App/app/src/main/res/layout/activity_sign_in.xml" value="0.1921875" />
+        <entry key="..\:/Work/Freelance/Recruitment/Recruitment App/app/src/main/res/layout/activity_signup.xml" value="0.22" />
+        <entry key="..\:/Work/Freelance/Recruitment/Recruitment App/app/src/main/res/layout/layout_forgot_password.xml" value="0.1921875" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_15_PREVIEW" project-jdk-name="15" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>

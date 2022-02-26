@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "101923764582",
+    "project_id": "recruitment-6e60d",
+    "storage_bucket": "recruitment-6e60d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:101923764582:android:4d99a84387c548273df0a7",
+        "android_client_info": {
+          "package_name": "com.maad.recruitment"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "101923764582-di5guju8nh0bs05ju1bomjf0uq7tavkb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD1xBokterGaBo72l8L7X9tMCnQftWhCEk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "101923764582-di5guju8nh0bs05ju1bomjf0uq7tavkb.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
