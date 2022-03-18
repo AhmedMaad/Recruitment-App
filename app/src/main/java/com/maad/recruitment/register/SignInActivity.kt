@@ -13,7 +13,7 @@ import com.google.firebase.ktx.Firebase
 import com.maad.recruitment.company.CompanyProfileActivity
 import com.maad.recruitment.databinding.ActivitySignInBinding
 import com.maad.recruitment.jobseeker.AvailableCompaniesActivity
-import com.maad.recruitment.recruiter.RecruiterProfileActivity
+import com.maad.recruitment.recruiter.AvailableEmployeesActivity
 
 class SignInActivity : AppCompatActivity() {
 
@@ -32,7 +32,7 @@ class SignInActivity : AppCompatActivity() {
         db = Firebase.firestore
 
         binding.signInBtn.setOnClickListener {
-            val email = "c@gmail.com"
+            val email = "j@gmail.com"
             val password = "123456"
             //TODO: Uncomment this after debugging phase
             //val email = binding.emailEt.text.toString()
@@ -89,7 +89,7 @@ class SignInActivity : AppCompatActivity() {
                 val activityToOpen = when (it.getString("userType")) {
                     "Job Seeker" -> AvailableCompaniesActivity::class.java
                     "Company" -> CompanyProfileActivity::class.java
-                    else -> RecruiterProfileActivity::class.java
+                    else -> AvailableEmployeesActivity::class.java
                 }
                 startActivity(Intent(this, activityToOpen))
                 finish()

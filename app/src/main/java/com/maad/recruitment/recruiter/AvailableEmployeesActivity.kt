@@ -4,7 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.maad.recruitment.databinding.ActivityRecruiterProfileBinding
 
-class RecruiterProfileActivity : AppCompatActivity() {
+class AvailableEmployeesActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityRecruiterProfileBinding
 

@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Recruitment">
         <activity
-            android:name=".recruiter.RecruiterProfileActivity"
+            android:name=".recruiter.AvailableEmployeesActivity"
             android:exported="false" />
         <activity
             android:name=".company.job.JobActivity"
@@ -43,6 +43,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
     </application>
 
 </manifest>
