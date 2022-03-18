@@ -32,10 +32,10 @@
             android:name=".jobseeker.AvailableCompaniesActivity"
             android:exported="false" />
         <activity
-            android:name=".register.SignInActivity"
+            android:name=".register.SignupActivity"
             android:exported="false" />
         <activity
-            android:name=".register.SignupActivity"
+            android:name=".register.SignInActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

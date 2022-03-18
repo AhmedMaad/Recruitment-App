@@ -32,8 +32,11 @@ class SignInActivity : AppCompatActivity() {
         db = Firebase.firestore
 
         binding.signInBtn.setOnClickListener {
-            val email = binding.emailEt.text.toString()
-            val password = binding.passwordEt.text.toString()
+            val email = "c@gmail.com"
+            val password = "123456"
+            //TODO: Uncomment this after debugging phase
+            //val email = binding.emailEt.text.toString()
+            //val password = binding.passwordEt.text.toString()
             if (email.isEmpty() || password.isEmpty())
                 Toast.makeText(this, "Missing Required Fields", Toast.LENGTH_SHORT).show();
             else {
@@ -79,6 +82,7 @@ class SignInActivity : AppCompatActivity() {
 
                 val prefs = getSharedPreferences("authentication", MODE_PRIVATE).edit()
                 prefs.putString("id", docId)
+                prefs.putString("email", binding.emailEt.text.toString())
                 prefs.apply()
 
                 //The case of "else" represents "Recruiter"
