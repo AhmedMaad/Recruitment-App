@@ -18,7 +18,7 @@ class AvailableCompaniesAdapter(
     RecyclerView.Adapter<AvailableCompaniesAdapter.CompaniesViewHolder>() {
 
     interface OnItemClickListener {
-        fun onItemClick(position: Int, view: View)
+        fun onItemClick(position: Int)
     }
 
     class CompaniesViewHolder(view: View, onItemClickListener: OnItemClickListener) :
@@ -29,7 +29,7 @@ class AvailableCompaniesAdapter(
 
         init {
             view.setOnClickListener {
-                onItemClickListener.onItemClick(adapterPosition, view)
+                onItemClickListener.onItemClick(adapterPosition)
             }
         }
 

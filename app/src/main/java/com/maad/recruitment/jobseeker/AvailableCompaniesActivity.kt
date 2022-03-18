@@ -3,11 +3,8 @@ package com.maad.recruitment.jobseeker
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
-import android.view.View
-import android.widget.Toast
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
@@ -27,6 +24,9 @@ class AvailableCompaniesActivity : AppCompatActivity(),
     private lateinit var departments: ArrayList<DepartmentModel>
     private lateinit var employees: ArrayList<EmployeeModel>
     private lateinit var jobs: ArrayList<JobModel>
+    private var filteredDepartments = arrayListOf<DepartmentModel>()
+    private var filteredEmployees = arrayListOf<EmployeeModel>()
+    private var filteredJobs = arrayListOf<JobModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,18 +35,72 @@ class AvailableCompaniesActivity : AppCompatActivity(),
         title = "Companies"
         db = Firebase.firestore
 
-        //read "companies" collection from Firebase along with employees/department/jobs
-        //then show them in our recycler view
-        //When clicking on an item, filter using the clicked "Item" company ID
+        getCompanies()
+    }
+
+    override fun onItemClick(position: Int) {
+        //filter all jobs/departments/employees using company Id
+        val companyId = companies[position].id
+        for (employee in employees)
+            if (employee.companyId == companyId)
+                filteredEmployees.add(employee)
+
+        for (department in departments)
+            if (department.companyId == companyId)
+                filteredDepartments.add(department)
+
+        for (job in jobs)
+            if (job.companyId == companyId)
+                filteredJobs.add(job)
+
+        val i = Intent(this, CompanyDetailsActivity::class.java)
+        i.putExtra("jobs", filteredJobs)
+        i.putExtra("departments", filteredDepartments)
+        i.putExtra("employees", filteredEmployees)
+        i.putExtra("company", companies[position])
+        startActivity(i)
+    }
+
+    private fun getCompanies() {
         db
             .collection("companies")
             .get()
             .addOnSuccessListener {
                 companies = it.toObjects(CompanyModel::class.java) as ArrayList<CompanyModel>
+                getDepartments()
+            }
+    }
+
+    private fun getDepartments() {
+        db
+            .collection("departments")
+            .get()
+            .addOnSuccessListener {
+                departments =
+                    it.toObjects(DepartmentModel::class.java) as ArrayList<DepartmentModel>
+                getEmployees()
+            }
+    }
+
+    private fun getEmployees() {
+        db
+            .collection("employees")
+            .get()
+            .addOnSuccessListener {
+                employees = it.toObjects(EmployeeModel::class.java) as ArrayList<EmployeeModel>
+                getJobs()
+            }
+    }
+
+    private fun getJobs() {
+        db
+            .collection("jobs")
+            .get()
+            .addOnSuccessListener {
+                jobs = it.toObjects(JobModel::class.java) as ArrayList<JobModel>
                 val adapter = AvailableCompaniesAdapter(this, companies, this)
                 binding.rv.adapter = adapter
             }
-
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -58,10 +112,6 @@ class AvailableCompaniesActivity : AppCompatActivity(),
         if (item.itemId == R.id.item_profile)
             startActivity(Intent(this, SeekerProfileActivity::class.java))
         return super.onOptionsItemSelected(item)
-    }
-
-    override fun onItemClick(position: Int, view: View) {
-        Toast.makeText(this, "$position", Toast.LENGTH_SHORT).show();
     }
 
 }

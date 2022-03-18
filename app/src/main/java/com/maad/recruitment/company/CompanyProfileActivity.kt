@@ -135,10 +135,9 @@ class CompanyProfileActivity : AppCompatActivity() {
         val phoneNumber = binding.phoneEt.text.toString()
         val location = binding.locationEt.text.toString()
         val name = binding.nameEt.text.toString()
-        //TODO: Upload object using "companies" collection
         val imageLink = imageUri?.toString() ?: company.image
 
-        company = CompanyModel(imageLink, name, email, details, phoneNumber, location)
+        company = CompanyModel(imageLink, name, email, details, phoneNumber, location, id)
 
         db
             .collection("companies")

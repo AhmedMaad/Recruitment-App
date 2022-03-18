@@ -1,5 +1,9 @@
 package com.maad.recruitment.company.job
 
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
+
+@Parcelize
 class JobModel(
     val title: String = "",
     val description: String = "",
@@ -7,4 +11,4 @@ class JobModel(
     val salary: String = "",
     val isNegotiable: Boolean = false,
     val companyId: String = ""
-)
+) : Parcelable
