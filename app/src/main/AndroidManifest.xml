@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Recruitment">
         <activity
-            android:name=".company.EmployeeActivity"
+            android:name=".company.JobActivity"
             android:exported="false" />
         <activity
             android:name=".SignupActivity"
@@ -32,7 +32,7 @@
             android:name=".SignInActivity"
             android:exported="false" />
         <activity
-            android:name=".company.JobActivity"
+            android:name=".company.EmployeeActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

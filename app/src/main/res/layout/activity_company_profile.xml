@@ -12,6 +12,7 @@
         android:padding="16dp">
 
         <TextView
+            android:id="@+id/note_tv"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginEnd="8dp"
@@ -30,7 +31,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <ProgressBar
-            android:id="@+id/pb"
+            android:id="@+id/progress"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:visibility="invisible"
@@ -42,10 +43,10 @@
             android:id="@+id/profile_picture_cv"
             android:layout_width="120dp"
             android:layout_height="120dp"
-            android:layout_marginTop="56dp"
+            android:layout_marginTop="40dp"
             app:cardCornerRadius="60dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toBottomOf="@id/note_tv">
 
             <ImageView
                 android:id="@+id/iv_profile"
@@ -137,7 +138,6 @@
                 android:id="@+id/et_phone"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
                 android:inputType="phone"
                 android:minLines="4"
                 android:textColorHint="@color/black"
@@ -159,7 +159,6 @@
                 android:id="@+id/et_location"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
                 android:inputType="phone"
                 android:minLines="4"
                 android:textColorHint="@color/black"
