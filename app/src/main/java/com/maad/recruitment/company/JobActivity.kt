@@ -20,5 +20,7 @@ class JobActivity : AppCompatActivity() {
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         binding.currencySpinner.adapter = adapter
 
+        //show progress bar and hide add button while adding a job
+
     }
 }
