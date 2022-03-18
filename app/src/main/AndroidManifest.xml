@@ -10,10 +10,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Recruitment">
         <activity
+            android:name=".recruiter.RecruiterProfileActivity"
+            android:exported="false" />
+        <activity
             android:name=".company.JobActivity"
             android:exported="false" />
         <activity
-            android:name=".SignupActivity"
+            android:name=".company.EmployeeActivity"
             android:exported="false" />
         <activity
             android:name=".company.DepartmentActivity"
@@ -22,17 +25,17 @@
             android:name=".company.CompanyProfileActivity"
             android:exported="false" />
         <activity
-            android:name=".ForgotPasswordActivity"
+            android:name=".register.ForgotPasswordActivity"
             android:exported="false"
             android:theme="@style/Theme.Design.Light" />
         <activity
             android:name=".jobseeker.AvailableCompaniesActivity"
             android:exported="false" />
         <activity
-            android:name=".SignInActivity"
+            android:name=".register.SignInActivity"
             android:exported="false" />
         <activity
-            android:name=".company.EmployeeActivity"
+            android:name=".register.SignupActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -1,4 +1,4 @@
-package com.maad.recruitment
+package com.maad.recruitment.register
 
 import android.os.Bundle
 import android.widget.EditText
@@ -7,6 +7,7 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
+import com.maad.recruitment.R
 
 class ForgotPasswordActivity : AppCompatActivity() {
 

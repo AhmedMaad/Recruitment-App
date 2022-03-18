@@ -11,21 +11,32 @@
         android:layout_height="wrap_content"
         android:padding="16dp">
 
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:background="@color/browser_actions_bg_grey"
+            app:layout_constraintBottom_toTopOf="@id/divider_view"
+            app:layout_constraintTop_toTopOf="parent" />
+
         <TextView
             android:id="@+id/note_tv"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="4dp"
             android:layout_marginEnd="8dp"
             android:text="note: By default, your current email will be uploaded"
             android:textColor="@android:color/holo_red_dark"
-            app:layout_constraintEnd_toStartOf="@id/iv_save"
+            app:layout_constraintEnd_toStartOf="@id/done_iv"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
-            android:id="@+id/iv_save"
+            android:id="@+id/done_iv"
             android:layout_width="40dp"
             android:layout_height="40dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="4dp"
             android:src="@drawable/ic_save"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -35,21 +46,22 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:visibility="invisible"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/done_iv"
+            app:layout_constraintTop_toTopOf="@id/done_iv"
             tools:visibility="visible" />
 
         <androidx.cardview.widget.CardView
             android:id="@+id/profile_picture_cv"
             android:layout_width="120dp"
             android:layout_height="120dp"
+            android:layout_marginStart="4dp"
             android:layout_marginTop="40dp"
             app:cardCornerRadius="60dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/note_tv">
 
             <ImageView
-                android:id="@+id/iv_profile"
+                android:id="@+id/profile_iv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:scaleType="centerCrop"
@@ -58,19 +70,18 @@
         </androidx.cardview.widget.CardView>
 
         <EditText
-            android:id="@+id/et_name"
+            android:id="@+id/name_et"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
             android:layout_marginBottom="30dp"
-            android:hint="Enter your name"
+            android:hint="Company name"
             android:textColor="@color/black"
             android:textSize="24sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="@id/profile_picture_cv"
             app:layout_constraintStart_toEndOf="@id/profile_picture_cv"
-            app:layout_constraintTop_toTopOf="@id/profile_picture_cv"
-            tools:text="@tools:sample/full_names" />
+            app:layout_constraintTop_toTopOf="@id/profile_picture_cv" />
 
         <TextView
             android:id="@+id/tv_email"
@@ -85,7 +96,7 @@
             tools:text="nexttrend.com" />
 
         <View
-            android:id="@+id/v1"
+            android:id="@+id/divider_view"
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:layout_marginTop="16dp"
@@ -103,7 +114,7 @@
             android:textSize="24sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/v1" />
+            app:layout_constraintTop_toBottomOf="@id/divider_view" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/about_container"
@@ -116,7 +127,7 @@
             app:startIconDrawable="@drawable/ic_content">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/et_about"
+                android:id="@+id/details_et"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:minLines="4"
@@ -135,7 +146,7 @@
             app:startIconDrawable="@drawable/ic_phone">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/et_phone"
+                android:id="@+id/phone_et"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="phone"
@@ -156,7 +167,7 @@
             app:startIconDrawable="@drawable/ic_location">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/et_location"
+                android:id="@+id/location_et"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="phone"
@@ -186,12 +197,12 @@
             android:text="Department"
             app:icon="@drawable/ic_department"
             app:iconGravity="textTop"
-            app:layout_constraintEnd_toStartOf="@id/dd_employee_btn"
+            app:layout_constraintEnd_toStartOf="@id/add_employee_btn"
             app:layout_constraintStart_toEndOf="@id/add_job_btn"
             app:layout_constraintTop_toTopOf="@id/add_job_btn" />
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/dd_employee_btn"
+            android:id="@+id/add_employee_btn"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="Employee"
