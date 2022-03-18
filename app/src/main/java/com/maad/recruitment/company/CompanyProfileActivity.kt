@@ -13,6 +13,7 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.FirebaseStorage
+import com.maad.recruitment.ExitDialog
 import com.maad.recruitment.company.department.DepartmentActivity
 import com.maad.recruitment.company.employee.EmployeeActivity
 import com.maad.recruitment.company.job.JobActivity
@@ -159,6 +160,12 @@ class CompanyProfileActivity : AppCompatActivity() {
             //Log.d("trace", "Chosen Image: $imageUri")
             binding.profileIv.setImageURI(imageUri)
         }
+    }
+
+    override fun onBackPressed() {
+        val exit = ExitDialog()
+        exit.isCancelable = false
+        exit.show(supportFragmentManager, null)
     }
 
 }
