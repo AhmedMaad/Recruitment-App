@@ -14,8 +14,9 @@ class AvailableCompaniesActivity : AppCompatActivity() {
         setContentView(binding.root)
         title = "Companies"
 
-        //make recycler view that shows companies using joneer list item
-        //with logo, name, about with (see more..)
+        //read "companies" collection from Firebase along with employees/department/jobs
+        //then show them in our recycler view
+        //When clicking on an item, filter using the clicked "Item" company ID
 
     }
 }
