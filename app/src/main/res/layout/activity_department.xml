@@ -92,7 +92,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="32dp"
-            android:text="add"
+            android:text="@string/add"
             app:cornerRadius="24dp"
             app:icon="@drawable/ic_department"
             app:iconGravity="textStart" />

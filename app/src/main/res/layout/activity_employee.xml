@@ -21,7 +21,7 @@
             app:cardCornerRadius="60dp">
 
             <ImageView
-                android:id="@+id/iv_profile"
+                android:id="@+id/profile_iv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -69,12 +69,12 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/add_emplyee_btn"
+            android:id="@+id/add_employee_btn"
             android:layout_width="160dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="32dp"
-            android:text="add"
+            android:text="@string/add"
             app:cornerRadius="24dp"
             app:icon="@drawable/ic_person"
             app:iconGravity="textStart" />
