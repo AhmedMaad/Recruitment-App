@@ -1,10 +1,207 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".company.CompanyProfileActivity">
 
-  </androidx.constraintlayout.widget.ConstraintLayout>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:text="note: By default, your current email will be uploaded"
+            android:textColor="@android:color/holo_red_dark"
+            app:layout_constraintEnd_toStartOf="@id/iv_save"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/iv_save"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/ic_save"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ProgressBar
+            android:id="@+id/pb"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="invisible"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:visibility="visible" />
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/profile_picture_cv"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:layout_marginTop="56dp"
+            app:cardCornerRadius="60dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/iv_profile"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:scaleType="centerCrop"
+                tools:src="@tools:sample/avatars" />
+
+        </androidx.cardview.widget.CardView>
+
+        <EditText
+            android:id="@+id/et_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginBottom="30dp"
+            android:hint="Enter your name"
+            android:textColor="@color/black"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@id/profile_picture_cv"
+            app:layout_constraintStart_toEndOf="@id/profile_picture_cv"
+            app:layout_constraintTop_toTopOf="@id/profile_picture_cv"
+            tools:text="@tools:sample/full_names" />
+
+        <TextView
+            android:id="@+id/tv_email"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginBottom="20dp"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            app:layout_constraintStart_toEndOf="@id/profile_picture_cv"
+            app:layout_constraintTop_toBottomOf="@id/et_name"
+            tools:text="nexttrend.com" />
+
+        <View
+            android:id="@+id/v1"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="16dp"
+            android:background="@color/black"
+            app:layout_constraintTop_toBottomOf="@id/profile_picture_cv" />
+
+        <TextView
+            android:id="@+id/tv_about"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="40dp"
+            android:text="About"
+            android:textColor="@color/black"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/v1" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/about_container"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:hint="Details"
+            app:layout_constraintTop_toBottomOf="@id/tv_about"
+            app:startIconDrawable="@drawable/ic_content">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_about"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minLines="4"
+                android:textSize="18sp" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/phone_container"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:hint="Phone Number"
+            app:layout_constraintTop_toBottomOf="@id/about_container"
+            app:startIconDrawable="@drawable/ic_phone">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_phone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:inputType="phone"
+                android:minLines="4"
+                android:textColorHint="@color/black"
+                android:textSize="18sp" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/location_container"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:hint="Location"
+            app:layout_constraintTop_toBottomOf="@id/phone_container"
+            app:startIconDrawable="@drawable/ic_location">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_location"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:inputType="phone"
+                android:minLines="4"
+                android:textColorHint="@color/black"
+                android:textSize="18sp" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/add_job_btn"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="job"
+            app:icon="@drawable/ic_job"
+            app:iconGravity="textTop"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/location_container" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/add_dept_btn"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:layout_marginEnd="4dp"
+            android:text="Department"
+            app:icon="@drawable/ic_department"
+            app:iconGravity="textTop"
+            app:layout_constraintEnd_toStartOf="@id/dd_employee_btn"
+            app:layout_constraintStart_toEndOf="@id/add_job_btn"
+            app:layout_constraintTop_toTopOf="@id/add_job_btn" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/dd_employee_btn"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Employee"
+            app:icon="@drawable/ic_person"
+            app:iconGravity="textTop"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/add_dept_btn"
+            app:layout_constraintTop_toTopOf="@id/add_job_btn" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>
