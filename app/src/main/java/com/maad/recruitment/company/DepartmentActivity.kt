@@ -12,5 +12,7 @@ class DepartmentActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityDepartmentBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        //show progress bar and hide add button while adding a job
+
     }
 }

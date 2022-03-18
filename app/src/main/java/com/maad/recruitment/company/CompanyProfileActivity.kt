@@ -33,15 +33,6 @@ class CompanyProfileActivity : AppCompatActivity() {
         setContentView(binding.root)
         db = Firebase.firestore
 
-        //Choosing to add "departments - jobs - employees" will be pushed
-        //to firebase immediately using company id
-
-        //read company data from firebase
-
-        //show progress when adding and hide "done" icon
-
-        //TODO: Return the email from firebase to be shown in the text view
-
         val prefs = getSharedPreferences("authentication", MODE_PRIVATE)
         id = prefs.getString("id", null)!!
         email = prefs.getString("email", null)!!
@@ -53,8 +44,8 @@ class CompanyProfileActivity : AppCompatActivity() {
             .document(id)
             .get()
             .addOnSuccessListener {
-                    company = it.toObject(CompanyModel::class.java) ?: CompanyModel()
-                if (company.name.isNotEmpty()){
+                company = it.toObject(CompanyModel::class.java) ?: CompanyModel()
+                if (company.name.isNotEmpty()) {
                     title = "${company.name} Profile"
                     binding.nameEt.setText(company.name)
                     binding.detailsEt.setText(company.details)
@@ -68,15 +59,6 @@ class CompanyProfileActivity : AppCompatActivity() {
                         .into(binding.profileIv)
                 }
 
-                /*if (company.getName() != null) nameET.setText(user.getName())
-                if (company.getAbout() != null) aboutET.setText(user.getAbout())
-                if (company.getPhone() != null) phoneET.setText(user.getPhone())
-                if (company.getHourlyRate() != null) hourlyRateET.setText(user.getHourlyRate())
-                if (user.getPicture() != null) Picasso
-                    .get()
-                    .load(user.getPicture())
-                    .into(profileIV)
-                emailTV.setText(user.getEmail())*/
             }
 
         binding.profilePictureCv.setOnClickListener {
@@ -87,15 +69,21 @@ class CompanyProfileActivity : AppCompatActivity() {
         }
 
         binding.addJobBtn.setOnClickListener {
-            startActivity(Intent(this, JobActivity::class.java))
+            val i = Intent(this, JobActivity::class.java)
+            i.putExtra("companyId", id)
+            startActivity(i)
         }
 
         binding.addDeptBtn.setOnClickListener {
-            startActivity(Intent(this, DepartmentActivity::class.java))
+            val i = Intent(this, DepartmentActivity::class.java)
+            i.putExtra("companyId", id)
+            startActivity(i)
         }
 
         binding.addEmployeeBtn.setOnClickListener {
-            startActivity(Intent(this, EmployeeActivity::class.java))
+            val i = Intent(this, EmployeeActivity::class.java)
+            i.putExtra("companyId", id)
+            startActivity(i)
         }
 
         binding.doneIv.setOnClickListener {
@@ -145,11 +133,7 @@ class CompanyProfileActivity : AppCompatActivity() {
         val location = binding.locationEt.text.toString()
         val name = binding.nameEt.text.toString()
         //TODO: Upload object using "companies" collection
-        var imageLink = ""
-        if (imageUri != null)
-            imageLink = imageUri.toString()
-        else
-            imageLink = company.image
+        val imageLink = imageUri?.toString() ?: company.image
 
         company = CompanyModel(imageLink, name, email, details, phoneNumber, location)
 
