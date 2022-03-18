@@ -10,7 +10,9 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
+import com.maad.recruitment.company.CompanyProfileActivity
 import com.maad.recruitment.databinding.ActivitySignupBinding
+import com.maad.recruitment.jobseeker.AvailableCompaniesActivity
 
 class SignupActivity : AppCompatActivity() {
 
@@ -62,6 +64,11 @@ class SignupActivity : AppCompatActivity() {
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful && auth.currentUser != null) {
                     val userId = auth.currentUser!!.uid
+
+                    val prefs = getSharedPreferences("authentication", MODE_PRIVATE).edit()
+                    prefs.putString("id", userId)
+                    prefs.apply()
+
                     val user = User(userId, fName, lName, userType)
                     val db = Firebase.firestore
                     db
@@ -70,7 +77,18 @@ class SignupActivity : AppCompatActivity() {
                         .set(user)
                         .addOnSuccessListener {
                             binding.progress.visibility = View.INVISIBLE
-                            startActivity(Intent(this, AvailableCompaniesActivity::class.java))
+                            when (userType) {
+                                "Job Seeker" ->
+                                    startActivity(
+                                        Intent(
+                                            this,
+                                            AvailableCompaniesActivity::class.java
+                                        )
+                                    )
+                                "Company" ->
+                                    startActivity(Intent(this, CompanyProfileActivity::class.java))
+                                "Recruiter" -> {}
+                            }
                             finish()
                         }
 

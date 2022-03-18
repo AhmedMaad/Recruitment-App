@@ -9,17 +9,16 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import com.maad.recruitment.databinding.ActivitySignInBinding
-import com.maad.recruitment.databinding.ActivitySignupBinding
+import com.maad.recruitment.jobseeker.AvailableCompaniesActivity
 
 class SignInActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivitySignInBinding
     private lateinit var auth: FirebaseAuth
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_sign_in)
+        //setContentView(R.layout.activity_sign_in)
         binding = ActivitySignInBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
@@ -37,7 +36,8 @@ class SignInActivity : AppCompatActivity() {
                     .addOnCompleteListener(this) { task ->
                         if (task.isSuccessful) {
                             binding.progress.visibility = View.INVISIBLE
-                            startActivity(Intent(this, AvailableCompaniesActivity::class.java))
+                            //TODO: You have to get usertype before going anywhere
+                            //startActivity(Intent(this, AvailableCompaniesActivity::class.java))
                             finish()
                         } else {
                             binding.progress.visibility = View.INVISIBLE

@@ -10,11 +10,23 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Recruitment">
         <activity
+            android:name=".company.EmployeeActivity"
+            android:exported="false" />
+        <activity
+            android:name=".company.JobActivity"
+            android:exported="false" />
+        <activity
+            android:name=".company.DepartmentActivity"
+            android:exported="false" />
+        <activity
+            android:name=".company.CompanyProfileActivity"
+            android:exported="false" />
+        <activity
             android:name=".ForgotPasswordActivity"
             android:exported="false"
-            android:theme="@style/Theme.Design.Light"/>
+            android:theme="@style/Theme.Design.Light" />
         <activity
-            android:name=".AvailableCompaniesActivity"
+            android:name=".jobseeker.AvailableCompaniesActivity"
             android:exported="false" />
         <activity
             android:name=".SignInActivity"
