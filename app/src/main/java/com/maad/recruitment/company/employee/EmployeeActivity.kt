@@ -1,4 +1,4 @@
-package com.maad.recruitment.company
+package com.maad.recruitment.company.employee
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

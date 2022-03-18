@@ -1,119 +1,125 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="16dp"
-    tools:context=".company.JobActivity">
+    tools:context=".company.job.JobActivity">
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/title_container"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Job Title"
-        app:layout_constraintTop_toTopOf="parent">
+        android:layout_height="wrap_content">
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/title_et"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/title_container"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="wrap_content"
+            android:hint="Job Title"
+            app:layout_constraintTop_toTopOf="parent">
 
-    </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/title_et"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/description_container"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:hint="Job Description"
-        app:layout_constraintTop_toBottomOf="@id/title_container">
+        </com.google.android.material.textfield.TextInputLayout>
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/description_et"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/description_container"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:minLines="5" />
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:hint="Job Description"
+            app:layout_constraintTop_toBottomOf="@id/title_container">
 
-    </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/description_et"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:minLines="5" />
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/benefits_container"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:hint="Job Benefits"
-        app:layout_constraintTop_toBottomOf="@id/description_container">
+        </com.google.android.material.textfield.TextInputLayout>
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/benefits_et"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/benefits_container"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:minLines="3" />
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:hint="Job Benefits"
+            app:layout_constraintTop_toBottomOf="@id/description_container">
 
-    </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/benefits_et"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:minLines="3" />
 
-    <Spinner
-        android:id="@+id/currency_spinner"
-        android:layout_width="80dp"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="@id/salary_container"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/salary_container" />
+        </com.google.android.material.textfield.TextInputLayout>
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/salary_container"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:hint="Job Salary"
-        app:layout_constraintStart_toEndOf="@id/currency_spinner"
-        app:layout_constraintTop_toBottomOf="@id/benefits_container">
+        <Spinner
+            android:id="@+id/currency_spinner"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="@id/salary_container"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/salary_container" />
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/salary_et"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:inputType="numberDecimal" />
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/salary_container"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:hint="Job Salary"
+            app:layout_constraintStart_toEndOf="@id/currency_spinner"
+            app:layout_constraintTop_toBottomOf="@id/benefits_container">
 
-    </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/salary_et"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:inputType="numberDecimal" />
 
-    <CheckBox
-        android:id="@+id/negotiable_cb"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:text="negotiable"
-        app:layout_constraintBottom_toBottomOf="@id/salary_container"
-        app:layout_constraintEnd_toEndOf="@id/benefits_container"
-        app:layout_constraintTop_toTopOf="@id/salary_container" />
+        </com.google.android.material.textfield.TextInputLayout>
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/add_job_btn"
-        android:layout_width="160dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:text="add"
-        app:cornerRadius="24dp"
-        app:icon="@drawable/ic_job"
-        app:iconGravity="textStart"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/salary_container" />
+        <CheckBox
+            android:id="@+id/negotiable_cb"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:text="negotiable"
+            app:layout_constraintBottom_toBottomOf="@id/salary_container"
+            app:layout_constraintEnd_toEndOf="@id/benefits_container"
+            app:layout_constraintTop_toTopOf="@id/salary_container" />
 
-    <ProgressBar
-        android:id="@+id/progress"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="@id/add_job_btn"
-        app:layout_constraintEnd_toEndOf="@id/add_job_btn"
-        app:layout_constraintStart_toStartOf="@id/add_job_btn"
-        app:layout_constraintTop_toTopOf="@id/add_job_btn"
-        tools:visibility="visible" />
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/add_job_btn"
+            android:layout_width="160dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:text="add"
+            app:cornerRadius="24dp"
+            app:icon="@drawable/ic_job"
+            app:iconGravity="textStart"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/salary_container" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <ProgressBar
+            android:id="@+id/progress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="@id/add_job_btn"
+            app:layout_constraintEnd_toEndOf="@id/add_job_btn"
+            app:layout_constraintStart_toStartOf="@id/add_job_btn"
+            app:layout_constraintTop_toTopOf="@id/add_job_btn"
+            tools:visibility="visible" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>

@@ -13,13 +13,13 @@
             android:name=".recruiter.RecruiterProfileActivity"
             android:exported="false" />
         <activity
-            android:name=".company.JobActivity"
+            android:name=".company.job.JobActivity"
             android:exported="false" />
         <activity
-            android:name=".company.EmployeeActivity"
+            android:name=".company.employee.EmployeeActivity"
             android:exported="false" />
         <activity
-            android:name=".company.DepartmentActivity"
+            android:name=".company.department.DepartmentActivity"
             android:exported="false" />
         <activity
             android:name=".company.CompanyProfileActivity"

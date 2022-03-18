@@ -3,7 +3,6 @@ package com.maad.recruitment.company
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import android.text.Editable
 import android.util.Log
 import android.view.View
 import android.widget.Toast
@@ -14,6 +13,9 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.FirebaseStorage
+import com.maad.recruitment.company.department.DepartmentActivity
+import com.maad.recruitment.company.employee.EmployeeActivity
+import com.maad.recruitment.company.job.JobActivity
 import com.maad.recruitment.databinding.ActivityCompanyProfileBinding
 import java.util.*
 

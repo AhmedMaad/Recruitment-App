@@ -1,4 +1,4 @@
-package com.maad.recruitment.company
+package com.maad.recruitment.company.job
 
 class JobModel(
     val title: String = "",

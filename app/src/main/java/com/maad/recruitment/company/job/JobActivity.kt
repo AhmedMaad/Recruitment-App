@@ -1,4 +1,4 @@
-package com.maad.recruitment.company
+package com.maad.recruitment.company.job
 
 import android.app.NotificationChannel
 import android.app.NotificationManager
@@ -63,7 +63,7 @@ class JobActivity : AppCompatActivity() {
             if (title.isEmpty() || description.isEmpty() || benefits.isEmpty() ||
                 binding.salaryEt.text.toString().isEmpty()
             )
-                Toast.makeText(this, "Missing Required Fields", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, R.string.missing_fields, Toast.LENGTH_SHORT).show()
             else {
                 binding.progress.visibility = View.VISIBLE
                 binding.addJobBtn.visibility = View.INVISIBLE
@@ -82,7 +82,7 @@ class JobActivity : AppCompatActivity() {
             .addOnSuccessListener {
                 binding.progress.visibility = View.INVISIBLE
                 binding.addJobBtn.visibility = View.VISIBLE
-                var builder = NotificationCompat.Builder(this, "Job")
+                val builder = NotificationCompat.Builder(this, "Job")
                     .setSmallIcon(R.drawable.ic_job)
                     .setContentTitle("Job Added")
                     .setContentText("Job Added Successfully")
@@ -96,8 +96,6 @@ class JobActivity : AppCompatActivity() {
     }
 
     private fun createNotificationChannel() {
-        // Create the NotificationChannel, but only on API 26+ because
-        // the NotificationChannel class is new and not in the support library
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             val name = "Job"
             val descriptionText = "Job Notification"
