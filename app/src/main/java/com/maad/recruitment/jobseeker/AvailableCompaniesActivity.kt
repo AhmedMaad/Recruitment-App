@@ -3,6 +3,7 @@ package com.maad.recruitment.jobseeker
 import android.app.ActivityOptions
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
@@ -20,6 +21,7 @@ import com.maad.recruitment.company.employee.EmployeeModel
 import com.maad.recruitment.company.job.JobModel
 import com.maad.recruitment.databinding.ActivityAvailableCompaniesBinding
 import android.util.Pair
+import com.maad.recruitment.ExitDialog
 
 class AvailableCompaniesActivity : AppCompatActivity(),
     AvailableCompaniesAdapter.OnItemClickListener {
@@ -55,9 +57,11 @@ class AvailableCompaniesActivity : AppCompatActivity(),
             if (department.companyId == companyId)
                 filteredDepartments.add(department)
 
-        for (job in jobs)
+        for (job in jobs) {
+            Log.d("trace", "${job.companyId}, orig. id: ${companyId}")
             if (job.companyId == companyId)
                 filteredJobs.add(job)
+        }
 
         val i = Intent(this, CompanyDetailsActivity::class.java)
         i.putExtra("jobs", filteredJobs)
@@ -70,7 +74,8 @@ class AvailableCompaniesActivity : AppCompatActivity(),
         val imageTransition = Pair.create<View, String>(image, ViewCompat.getTransitionName(image))
         val nameTransition = Pair.create<View, String>(name, ViewCompat.getTransitionName(name))
 
-        val options = ActivityOptions.makeSceneTransitionAnimation(this, imageTransition, nameTransition)
+        val options =
+            ActivityOptions.makeSceneTransitionAnimation(this, imageTransition, nameTransition)
 
         startActivity(i, options.toBundle())
     }
@@ -92,6 +97,7 @@ class AvailableCompaniesActivity : AppCompatActivity(),
             .addOnSuccessListener {
                 departments =
                     it.toObjects(DepartmentModel::class.java) as ArrayList<DepartmentModel>
+                //Log.d("trace" , "Depts returned: ${departments.size}")
                 getEmployees()
             }
     }
@@ -102,6 +108,7 @@ class AvailableCompaniesActivity : AppCompatActivity(),
             .get()
             .addOnSuccessListener {
                 employees = it.toObjects(EmployeeModel::class.java) as ArrayList<EmployeeModel>
+                //Log.d("trace" , "Emps returned: ${employees.size}")
                 getJobs()
             }
     }
@@ -112,6 +119,7 @@ class AvailableCompaniesActivity : AppCompatActivity(),
             .get()
             .addOnSuccessListener {
                 jobs = it.toObjects(JobModel::class.java) as ArrayList<JobModel>
+                //Log.d("trace" , "Jobs returned: ${jobs.size}")
                 val adapter = AvailableCompaniesAdapter(this, companies, this)
                 binding.rv.adapter = adapter
             }
@@ -126,6 +134,19 @@ class AvailableCompaniesActivity : AppCompatActivity(),
         if (item.itemId == R.id.item_profile)
             startActivity(Intent(this, SeekerProfileActivity::class.java))
         return super.onOptionsItemSelected(item)
+    }
+
+    override fun onBackPressed() {
+        val exit = ExitDialog()
+        exit.isCancelable = false
+        exit.show(supportFragmentManager, null)
+    }
+
+    override fun onResume() {
+        super.onResume()
+        filteredJobs.clear()
+        filteredEmployees.clear()
+        filteredDepartments.clear()
     }
 
 }

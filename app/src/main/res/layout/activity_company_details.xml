@@ -90,6 +90,7 @@
             tools:text="@tools:sample/full_names" />
 
         <TextView
+            android:id="@+id/departments_key_tv"
             android:layout_width="match_parent"
             android:layout_height="32dp"
             android:layout_gravity="end"
@@ -110,6 +111,7 @@
             tools:listitem="@layout/department_list_item" />
 
         <TextView
+            android:id="@+id/jobs_key_tv"
             android:layout_width="match_parent"
             android:layout_height="32dp"
             android:layout_gravity="end"
@@ -131,6 +133,7 @@
 
 
         <TextView
+            android:id="@+id/employees_key_tv"
             android:layout_width="match_parent"
             android:layout_height="32dp"
             android:layout_gravity="end"

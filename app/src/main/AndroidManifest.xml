@@ -36,13 +36,13 @@
             android:exported="false"
             android:theme="@style/Theme.Design.Light" />
         <activity
-            android:name=".register.SignInActivity"
+            android:name=".jobseeker.AvailableCompaniesActivity"
             android:exported="false" />
         <activity
             android:name=".register.SignupActivity"
             android:exported="false" />
         <activity
-            android:name=".jobseeker.AvailableCompaniesActivity"
+            android:name=".register.SignInActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
