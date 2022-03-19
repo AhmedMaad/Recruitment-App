@@ -34,5 +34,7 @@ class CompanyDetailsActivity : AppCompatActivity() {
         binding.companyAboutTv.text = company.details
 
 
+
+
     }
 }

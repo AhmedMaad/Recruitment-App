@@ -8,9 +8,9 @@
     tools:context=".jobseeker.CompanyDetailsActivity">
 
     <LinearLayout
-        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
         <androidx.cardview.widget.CardView
             android:layout_width="120dp"
@@ -32,9 +32,9 @@
             android:id="@+id/company_name_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:layout_marginTop="16dp"
             android:fontFamily="@font/rakkas"
-            android:layout_gravity="center"
             android:textColor="@color/black"
             android:textSize="24sp"
             android:textStyle="bold"
@@ -44,32 +44,32 @@
             android:id="@+id/company_email_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
             android:layout_gravity="center"
+            android:layout_marginTop="8dp"
             tools:text="@tools:sample/full_names" />
 
         <TextView
             android:id="@+id/company_phone_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
             android:layout_gravity="center"
+            android:layout_marginTop="8dp"
             tools:text="@tools:sample/full_names" />
 
         <TextView
             android:id="@+id/company_location_tv"
-            android:textSize="18sp"
-            android:layout_gravity="center"
-            tools:text="@tools:sample/full_names"
-            android:layout_marginTop="16dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:drawableStartCompat="@drawable/ic_location" />
+            android:layout_gravity="center"
+            android:layout_marginTop="16dp"
+            android:textSize="18sp"
+            app:drawableStartCompat="@drawable/ic_location"
+            tools:text="@tools:sample/full_names" />
 
         <View
-            android:background="@color/black"
             android:layout_width="match_parent"
-            android:layout_height="1dp"/>
+            android:layout_height="1dp"
+            android:background="@color/black" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -89,39 +89,44 @@
             android:textSize="18sp"
             tools:text="@tools:sample/full_names" />
 
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="32dp"
+            android:layout_gravity="end"
+            android:layout_marginTop="16dp"
+            android:src="@drawable/ic_right_arrow" />
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        <!--
-        Recycler View (Departments)
-        val deptname: String = "",
-    val deptdescription: String = "",
-    val deptvision: String = "",
-    val deptmission: String = "",
-    val deptemployeesNumber: Int = 0,
-        -->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/departments_rv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            tools:listitem="@layout/department_list_item" />
 
         <!--
-    Recycler View (Jobs)
-    val title: String = "",
-    val description: String = "",
-    val benefits: String = "",
-    val salary: String = "",
-    val isNegotiable: Boolean = false,
--->
+     Recycler View (Jobs)
+     val title: String = "",
+     val description: String = "",
+     val benefits: String = "",
+     val salary: String = "",
+     val isNegotiable: Boolean = false,
+ -->
+
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="32dp"
+            android:layout_gravity="end"
+            android:layout_marginTop="16dp"
+            android:src="@drawable/ic_right_arrow" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/jobs_rv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+
 
         <!--
          Recycler View (Employees)
@@ -131,7 +136,19 @@
     val funQuote: String = "",
         -->
 
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="32dp"
+            android:layout_gravity="end"
+            android:layout_marginTop="16dp"
+            android:src="@drawable/ic_right_arrow" />
 
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/employees_rv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
 
     </LinearLayout>
 
