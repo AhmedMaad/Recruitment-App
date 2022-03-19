@@ -5,6 +5,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.core.view.ViewCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.maad.recruitment.R
@@ -18,7 +19,7 @@ class AvailableCompaniesAdapter(
     RecyclerView.Adapter<AvailableCompaniesAdapter.CompaniesViewHolder>() {
 
     interface OnItemClickListener {
-        fun onItemClick(position: Int)
+        fun onItemClick(position: Int, image: ImageView, name: TextView)
     }
 
     class CompaniesViewHolder(view: View, onItemClickListener: OnItemClickListener) :
@@ -29,7 +30,7 @@ class AvailableCompaniesAdapter(
 
         init {
             view.setOnClickListener {
-                onItemClickListener.onItemClick(adapterPosition)
+                onItemClickListener.onItemClick(adapterPosition, logo, name)
             }
         }
 
@@ -44,6 +45,9 @@ class AvailableCompaniesAdapter(
         holder.about.text = companies[position].details
         holder.name.text = companies[position].name
         Glide.with(activity).load(companies[position].image).into(holder.logo)
+        //Transition name has to be unique
+        ViewCompat.setTransitionName(holder.logo, companies[position].image)
+        ViewCompat.setTransitionName(holder.name, companies[position].id)
     }
 
     override fun getItemCount() = companies.size

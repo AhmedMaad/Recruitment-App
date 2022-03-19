@@ -1,10 +1,15 @@
 package com.maad.recruitment.jobseeker
 
+import android.app.ActivityOptions
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
+import android.widget.ImageView
+import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.ViewCompat
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
@@ -14,6 +19,7 @@ import com.maad.recruitment.company.department.DepartmentModel
 import com.maad.recruitment.company.employee.EmployeeModel
 import com.maad.recruitment.company.job.JobModel
 import com.maad.recruitment.databinding.ActivityAvailableCompaniesBinding
+import android.util.Pair
 
 class AvailableCompaniesActivity : AppCompatActivity(),
     AvailableCompaniesAdapter.OnItemClickListener {
@@ -38,7 +44,7 @@ class AvailableCompaniesActivity : AppCompatActivity(),
         getCompanies()
     }
 
-    override fun onItemClick(position: Int) {
+    override fun onItemClick(position: Int, image: ImageView, name: TextView) {
         //filter all jobs/departments/employees using company Id
         val companyId = companies[position].id
         for (employee in employees)
@@ -58,7 +64,15 @@ class AvailableCompaniesActivity : AppCompatActivity(),
         i.putExtra("departments", filteredDepartments)
         i.putExtra("employees", filteredEmployees)
         i.putExtra("company", companies[position])
-        startActivity(i)
+        i.putExtra("imageTransition", ViewCompat.getTransitionName(image))
+        i.putExtra("nameTransition", ViewCompat.getTransitionName(name))
+
+        val imageTransition = Pair.create<View, String>(image, ViewCompat.getTransitionName(image))
+        val nameTransition = Pair.create<View, String>(name, ViewCompat.getTransitionName(name))
+
+        val options = ActivityOptions.makeSceneTransitionAnimation(this, imageTransition, nameTransition)
+
+        startActivity(i, options.toBundle())
     }
 
     private fun getCompanies() {
