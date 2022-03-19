@@ -89,7 +89,7 @@
             android:textSize="18sp"
             tools:text="@tools:sample/full_names" />
 
-        <!--<TextView
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="32dp"
             android:layout_gravity="end"
@@ -107,9 +107,9 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            tools:listitem="@layout/department_list_item" />-->
+            tools:listitem="@layout/department_list_item" />
 
-        <!--<TextView
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="32dp"
             android:layout_gravity="end"
@@ -129,26 +129,23 @@
             tools:listitem="@layout/job_list_item"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
 
-        -->
 
-        <!--
-         Recycler View (Employees)
-         val employeeimage: String = "",
-    val empname: String = "",
-    val emprole: String = "",
-    val funQuote: String = "",
-        -->
-
-        <ImageView
-            android:layout_width="40dp"
+        <TextView
+            android:layout_width="match_parent"
             android:layout_height="32dp"
             android:layout_gravity="end"
             android:layout_marginTop="16dp"
-            android:src="@drawable/ic_right_arrow" />
+            android:layout_marginEnd="16dp"
+            android:text="Awesome Employees"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:drawableEndCompat="@drawable/ic_right_arrow" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/employees_rv"
             android:layout_width="match_parent"
+            tools:listitem="@layout/employee_list_item"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
