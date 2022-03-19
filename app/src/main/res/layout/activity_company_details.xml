@@ -89,12 +89,17 @@
             android:textSize="18sp"
             tools:text="@tools:sample/full_names" />
 
-        <ImageView
-            android:layout_width="40dp"
+        <!--<TextView
+            android:layout_width="match_parent"
             android:layout_height="32dp"
             android:layout_gravity="end"
             android:layout_marginTop="16dp"
-            android:src="@drawable/ic_right_arrow" />
+            android:layout_marginEnd="16dp"
+            android:text="Our Departments"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:drawableEndCompat="@drawable/ic_right_arrow" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/departments_rv"
@@ -102,31 +107,29 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            tools:listitem="@layout/department_list_item" />
+            tools:listitem="@layout/department_list_item" />-->
 
-        <!--
-     Recycler View (Jobs)
-     val title: String = "",
-     val description: String = "",
-     val benefits: String = "",
-     val salary: String = "",
-     val isNegotiable: Boolean = false,
- -->
-
-        <ImageView
-            android:layout_width="40dp"
+        <!--<TextView
+            android:layout_width="match_parent"
             android:layout_height="32dp"
             android:layout_gravity="end"
             android:layout_marginTop="16dp"
-            android:src="@drawable/ic_right_arrow" />
+            android:layout_marginEnd="16dp"
+            android:text="Available Jobs"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:drawableEndCompat="@drawable/ic_right_arrow" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/jobs_rv"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
+            tools:listitem="@layout/job_list_item"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
 
+        -->
 
         <!--
          Recycler View (Employees)
