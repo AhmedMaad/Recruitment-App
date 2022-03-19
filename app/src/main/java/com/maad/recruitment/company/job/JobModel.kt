@@ -9,6 +9,6 @@ class JobModel(
     val description: String = "",
     val benefits: String = "",
     val salary: String = "",
-    val isNegotiable: Boolean = false,
+    val negotiable: Boolean = false,
     val companyId: String = ""
 ) : Parcelable

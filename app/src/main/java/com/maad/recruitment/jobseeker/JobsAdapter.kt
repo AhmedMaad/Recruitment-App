@@ -1,6 +1,7 @@
 package com.maad.recruitment.jobseeker
 
 import android.app.Activity
+import android.util.Log
 import android.view.View
 import android.view.ViewGroup
 import android.widget.CheckBox
@@ -32,15 +33,16 @@ class JobsAdapter(val activity: Activity, val jobs: ArrayList<JobModel>) :
         holder.description.text = jobs[position].description
         holder.benefits.text = jobs[position].benefits
         holder.salary.text = jobs[position].salary
-        if (jobs[position].isNegotiable)
-            holder.salary.setCompoundDrawables(
+        Log.d("trace", "Negotiable: ${jobs[position].negotiable}")
+        if (jobs[position].negotiable)
+            holder.negotiable.setCompoundDrawablesWithIntrinsicBounds(
                 null,
                 null,
                 ActivityCompat.getDrawable(activity, R.drawable.ic_checked),
                 null
             )
         else
-            holder.salary.setCompoundDrawables(
+            holder.negotiable.setCompoundDrawablesWithIntrinsicBounds(
                 null,
                 null,
                 ActivityCompat.getDrawable(activity, R.drawable.ic_unchecked),

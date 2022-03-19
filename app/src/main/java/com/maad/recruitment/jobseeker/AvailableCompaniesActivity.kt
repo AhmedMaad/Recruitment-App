@@ -57,11 +57,9 @@ class AvailableCompaniesActivity : AppCompatActivity(),
             if (department.companyId == companyId)
                 filteredDepartments.add(department)
 
-        for (job in jobs) {
-            Log.d("trace", "${job.companyId}, orig. id: ${companyId}")
+        for (job in jobs)
             if (job.companyId == companyId)
                 filteredJobs.add(job)
-        }
 
         val i = Intent(this, CompanyDetailsActivity::class.java)
         i.putExtra("jobs", filteredJobs)
