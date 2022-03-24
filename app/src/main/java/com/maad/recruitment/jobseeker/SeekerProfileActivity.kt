@@ -10,11 +10,14 @@ import android.util.Log
 import android.view.Gravity
 import android.view.View
 import android.widget.Toast
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.ktx.storage
+import com.maad.recruitment.company.CompanyModel
 import com.maad.recruitment.databinding.ActivitySeekerProfileBinding
 import com.maad.recruitment.register.User
 import java.util.*
@@ -29,7 +32,7 @@ class SeekerProfileActivity : AppCompatActivity() {
     private var cvUri: Uri? = null
     var pdfName: String? = null
     private lateinit var storage: FirebaseStorage
-    //private var seeker: SeekerModel? = null
+    private lateinit var seeker: SeekerModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -49,8 +52,28 @@ class SeekerProfileActivity : AppCompatActivity() {
             .addOnSuccessListener {
                 val user = it.toObject(User::class.java)
                 binding.tvEmail.text = user?.email
-                Log.d("trace", "fName: ${user?.fname}, lName: ${user?.lname}")
                 binding.nameTv.text = "${user?.fname} ${user?.lname}"
+                title = "${user?.fname} ${user?.lname} Profile"
+            }
+
+        db
+            .collection("seekers")
+            .document(id)
+            .get()
+            .addOnSuccessListener {
+                seeker = it.toObject(SeekerModel::class.java) ?: SeekerModel()
+                if (seeker.experience.isNotEmpty()) {
+                    binding.experienceEt.setText(seeker.experience)
+                    binding.phoneEt.setText(seeker.number)
+                    binding.trackEt.setText(seeker.track)
+                    binding.uploadCvBtn.text = "Update CV"
+                    Glide
+                        .with(this)
+                        .load(seeker.picture)
+                        .transition(DrawableTransitionOptions.withCrossFade(1000))
+                        .into(binding.profileIv)
+                }
+
             }
 
         binding.profilePictureCv.setOnClickListener {
