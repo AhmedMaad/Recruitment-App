@@ -68,7 +68,6 @@ class CompanyProfileActivity : AppCompatActivity() {
             val i = Intent(Intent.ACTION_GET_CONTENT)
             i.type = "image/*"
             startActivityForResult(i, 101)
-            //Log.d("trace", "Choosing a picture")
         }
 
         binding.addJobBtn.setOnClickListener {
@@ -90,25 +89,19 @@ class CompanyProfileActivity : AppCompatActivity() {
         }
 
         binding.doneIv.setOnClickListener {
-            //Log.d("trace", "Clicked Done")
             binding.progress.visibility = View.VISIBLE
             binding.doneIv.visibility = View.INVISIBLE
             if (imageUri != null)
                 uploadImage()
-            else {
-                //Log.d("trace", "No Image Chosen")
-                uploadProfile(null)
-            } //This means that the user already has a pp
+            else
+                uploadProfile(null) //This means that the user already has a pp
 
         }
 
     }
 
     private fun uploadImage() {
-        //Log.d("trace", "Uploading Image")
-        //Accessing Cloud Storage bucket by creating an instance of FirebaseStorage
         val storage = FirebaseStorage.getInstance()
-        //Create a reference to upload, download, or delete a file
         val now: Calendar = Calendar.getInstance()
         val y: Int = now.get(Calendar.YEAR)
         val m: Int = now.get(Calendar.MONTH) + 1 // Note: zero based!
@@ -123,14 +116,12 @@ class CompanyProfileActivity : AppCompatActivity() {
         storageRef.putFile(imageUri!!)
             .addOnSuccessListener {
                 storageRef.downloadUrl.addOnSuccessListener {
-                    //Log.d("trace", "Getting Download link")
                     uploadProfile(it)
                 }
             }
     }
 
     private fun uploadProfile(imageUri: Uri?) {
-        //Log.d("trace", "Uploading Profile")
         val details = binding.detailsEt.text.toString()
         val phoneNumber = binding.phoneEt.text.toString()
         val location = binding.locationEt.text.toString()
@@ -156,7 +147,6 @@ class CompanyProfileActivity : AppCompatActivity() {
         super.onActivityResult(requestCode, resultCode, data)
         if (resultCode == RESULT_OK && requestCode == 101) {
             imageUri = data?.data
-            //Log.d("trace", "Chosen Image: $imageUri")
             binding.profileIv.setImageURI(imageUri)
         }
     }
