@@ -97,8 +97,11 @@ class SeekerProfileActivity : AppCompatActivity() {
                 uploadImage()
             else if(seeker.picture.isNotEmpty() && seeker.cv.isNotEmpty())
                 uploadProfile(null, null)
-            else
+            else{
+                binding.progress.visibility = View.INVISIBLE
+                binding.doneIv.visibility = View.VISIBLE
                 Toast.makeText(this, "Upload Picture & CV", Toast.LENGTH_SHORT).show();
+            }
 
         }
 
@@ -149,6 +152,7 @@ class SeekerProfileActivity : AppCompatActivity() {
         storageRef.putFile(imageUri!!)
             .addOnSuccessListener {
                 storageRef.downloadUrl.addOnSuccessListener {
+                    Log.d("trace", "Image Link: $it")
                     uploadCV(it)
                 }
             }
@@ -169,12 +173,14 @@ class SeekerProfileActivity : AppCompatActivity() {
         storageRef.putFile(cvUri!!)
             .addOnSuccessListener {
                 storageRef.downloadUrl.addOnSuccessListener {
+                    Log.d("trace", "CV Link: $it")
                     uploadProfile(it, imageUri)
                 }
             }
     }
 
     private fun uploadProfile(cvUri: Uri?, imageUri: Uri?) {
+        Log.d("trace", "Uploading Profile...")
         val experience = binding.experienceEt.text.toString()
         val phoneNumber = binding.phoneEt.text.toString()
         val track = binding.trackEt.text.toString()

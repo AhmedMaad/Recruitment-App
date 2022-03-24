@@ -15,14 +15,14 @@ import com.maad.recruitment.jobseeker.SeekerModel
 class SeekersAdapter(val activity: Activity, var seekers: ArrayList<SeekerModel>) :
     RecyclerView.Adapter<SeekersAdapter.SeekersVH>() {
 
-    class SeekersVH(view: View): RecyclerView.ViewHolder(view) {
-        val image: ImageView= view.findViewById(R.id.seeker_iv)
-        val name: TextView= view.findViewById(R.id.seeker_name_tv)
-        val role: TextView= view.findViewById(R.id.seeker_role_tv)
-        val experience: TextView= view.findViewById(R.id.seeker_experience_tv)
-        val mobile: TextView= view.findViewById(R.id.seeker_mobile_tv)
-        val email:TextView = view.findViewById(R.id.seeker_email_tv)
-        val cv: TextView= view.findViewById(R.id.seeker_cv_tv)
+    class SeekersVH(view: View) : RecyclerView.ViewHolder(view) {
+        val image: ImageView = view.findViewById(R.id.seeker_iv)
+        val name: TextView = view.findViewById(R.id.seeker_name_tv)
+        val role: TextView = view.findViewById(R.id.seeker_role_tv)
+        val experience: TextView = view.findViewById(R.id.seeker_experience_tv)
+        val mobile: TextView = view.findViewById(R.id.seeker_mobile_tv)
+        val email: TextView = view.findViewById(R.id.seeker_email_tv)
+        val cv: TextView = view.findViewById(R.id.seeker_cv_tv)
     }
 
     override fun onBindViewHolder(holder: SeekersVH, position: Int) {
@@ -37,8 +37,7 @@ class SeekersAdapter(val activity: Activity, var seekers: ArrayList<SeekerModel>
             activity.startActivity(intent)
         }
         holder.email.setOnClickListener {
-            val intent = Intent(Intent.ACTION_SENDTO, "mailto:".toUri())
-            intent.putExtra(Intent.EXTRA_EMAIL, seekers[position].email)
+            val intent = Intent(Intent.ACTION_SENDTO, "mailto:${seekers[position].email}".toUri())
             activity.startActivity(intent)
         }
         holder.cv.setOnClickListener {

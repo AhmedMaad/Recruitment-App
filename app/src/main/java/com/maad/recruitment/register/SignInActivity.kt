@@ -47,7 +47,7 @@ class SignInActivity : AppCompatActivity() {
                         if (task.isSuccessful)
                             getUserType(task.result!!.user!!.uid)
                         else {
-                            binding.signInBtn.visibility = View.INVISIBLE
+                            binding.signInBtn.visibility = View.VISIBLE
                             binding.progress.visibility = View.INVISIBLE
                             Toast.makeText(
                                 this,
