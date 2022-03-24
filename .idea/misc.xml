@@ -3,9 +3,11 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Work/Freelance/Recruitment/Recruitment App/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.156" />
         <entry key="..\:/Work/Freelance/Recruitment/Recruitment App/app/src/main/res/drawable/custom_drawable_checkbox.xml" value="0.11" />
         <entry key="..\:/Work/Freelance/Recruitment/Recruitment App/app/src/main/res/drawable/ic_checked.xml" value="0.1" />
         <entry key="..\:/Work/Freelance/Recruitment/Recruitment App/app/src/main/res/drawable/ic_gallery.xml" value="0.176" />
+        <entry key="..\:/Work/Freelance/Recruitment/Recruitment App/app/src/main/res/drawable/ic_launcher_background.xml" value="0.156" />
         <entry key="..\:/Work/Freelance/Recruitment/Recruitment App/app/src/main/res/drawable/ic_unchecked.xml" value="0.1" />
         <entry key="..\:/Work/Freelance/Recruitment/Recruitment App/app/src/main/res/layout/activity_available_companies.xml" value="0.1921875" />
         <entry key="..\:/Work/Freelance/Recruitment/Recruitment App/app/src/main/res/layout/activity_available_employees.xml" value="0.1921875" />
@@ -28,6 +30,8 @@
         <entry key="..\:/Work/Freelance/Recruitment/Recruitment App/app/src/main/res/layout/seeker_list_item.xml" value="0.25" />
         <entry key="..\:/Work/Freelance/Recruitment/Recruitment App/app/src/main/res/menu/profile_menu.xml" value="0.1921875" />
         <entry key="..\:/Work/Freelance/Recruitment/Recruitment App/app/src/main/res/menu/search_menu.xml" value="0.1921875" />
+        <entry key="..\:/Work/Freelance/Recruitment/Recruitment App/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.1575" />
+        <entry key="..\:/Work/Freelance/Recruitment/Recruitment App/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.1575" />
       </map>
     </option>
   </component>

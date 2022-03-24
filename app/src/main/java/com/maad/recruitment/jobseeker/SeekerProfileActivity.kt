@@ -95,11 +95,10 @@ class SeekerProfileActivity : AppCompatActivity() {
             binding.doneIv.visibility = View.INVISIBLE
             if (imageUri != null && cvUri != null)
                 uploadImage()
-            else {
-                //TODO: Check that image and cv are not null, if so then upload them
-                //if the image and cv are null the user might have a ready uploaded cv or image
-                //so, in that case check that the image contains a link, and the cv from server contains a link
-            }
+            else if(seeker.picture.isNotEmpty() && seeker.cv.isNotEmpty())
+                uploadProfile(null, null)
+            else
+                Toast.makeText(this, "Upload Picture & CV", Toast.LENGTH_SHORT).show();
 
         }
 
@@ -175,14 +174,14 @@ class SeekerProfileActivity : AppCompatActivity() {
             }
     }
 
-    private fun uploadProfile(cvUri: Uri, imageUri: Uri) {
+    private fun uploadProfile(cvUri: Uri?, imageUri: Uri?) {
         val experience = binding.experienceEt.text.toString()
         val phoneNumber = binding.phoneEt.text.toString()
         val track = binding.trackEt.text.toString()
-        val imageLink = imageUri.toString() ?: "" /*company.image*/
-        Log.d("trace", "Image Link: $imageLink")
-        val cvLink = cvUri.toString()
-        Log.d("trace", "CV Link: $cvLink")
+        val imageLink = imageUri?.toString() ?: seeker.picture
+        //Log.d("trace", "Image Link: $imageLink")
+        val cvLink = cvUri?.toString() ?: seeker.cv
+        //Log.d("trace", "CV Link: $cvLink")
         seeker = SeekerModel(imageLink, experience, phoneNumber, track, cvLink, id, name, email)
 
         db
