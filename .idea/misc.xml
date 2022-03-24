@@ -8,6 +8,8 @@
         <entry key="..\:/Work/Freelance/Recruitment/Recruitment App/app/src/main/res/drawable/ic_gallery.xml" value="0.176" />
         <entry key="..\:/Work/Freelance/Recruitment/Recruitment App/app/src/main/res/drawable/ic_unchecked.xml" value="0.1" />
         <entry key="..\:/Work/Freelance/Recruitment/Recruitment App/app/src/main/res/layout/activity_available_companies.xml" value="0.1921875" />
+        <entry key="..\:/Work/Freelance/Recruitment/Recruitment App/app/src/main/res/layout/activity_available_employees.xml" value="0.1921875" />
+        <entry key="..\:/Work/Freelance/Recruitment/Recruitment App/app/src/main/res/layout/activity_available_seekers.xml" value="0.1921875" />
         <entry key="..\:/Work/Freelance/Recruitment/Recruitment App/app/src/main/res/layout/activity_company_details.xml" value="0.25" />
         <entry key="..\:/Work/Freelance/Recruitment/Recruitment App/app/src/main/res/layout/activity_company_profile.xml" value="0.25" />
         <entry key="..\:/Work/Freelance/Recruitment/Recruitment App/app/src/main/res/layout/activity_department.xml" value="0.25" />
@@ -23,6 +25,7 @@
         <entry key="..\:/Work/Freelance/Recruitment/Recruitment App/app/src/main/res/layout/employee_list_item.xml" value="0.25" />
         <entry key="..\:/Work/Freelance/Recruitment/Recruitment App/app/src/main/res/layout/job_list_item.xml" value="0.25" />
         <entry key="..\:/Work/Freelance/Recruitment/Recruitment App/app/src/main/res/layout/layout_forgot_password.xml" value="0.1921875" />
+        <entry key="..\:/Work/Freelance/Recruitment/Recruitment App/app/src/main/res/layout/seeker_list_item.xml" value="0.25" />
         <entry key="..\:/Work/Freelance/Recruitment/Recruitment App/app/src/main/res/menu/profile_menu.xml" value="0.1921875" />
       </map>
     </option>

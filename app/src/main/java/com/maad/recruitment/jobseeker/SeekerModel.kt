@@ -6,5 +6,7 @@ class SeekerModel(
     val number: String = "",
     val track: String = "",
     val cv: String = "",
-    val id: String = ""
+    val id: String = "",
+    val name: String = "",
+    val email: String = ""
 )

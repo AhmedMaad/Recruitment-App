@@ -33,6 +33,7 @@ class SeekerProfileActivity : AppCompatActivity() {
     var pdfName: String? = null
     private lateinit var storage: FirebaseStorage
     private lateinit var seeker: SeekerModel
+    private lateinit var name: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -52,8 +53,9 @@ class SeekerProfileActivity : AppCompatActivity() {
             .addOnSuccessListener {
                 val user = it.toObject(User::class.java)
                 binding.tvEmail.text = user?.email
-                binding.nameTv.text = "${user?.fname} ${user?.lname}"
-                title = "${user?.fname} ${user?.lname} Profile"
+                name = "${user?.fname} ${user?.lname}"
+                binding.nameTv.text = name
+                title = "$name Profile"
             }
 
         db
@@ -181,7 +183,7 @@ class SeekerProfileActivity : AppCompatActivity() {
         Log.d("trace", "Image Link: $imageLink")
         val cvLink = cvUri.toString()
         Log.d("trace", "CV Link: $cvLink")
-        val seeker = SeekerModel(imageLink, experience, phoneNumber, track, cvLink, id)
+        seeker = SeekerModel(imageLink, experience, phoneNumber, track, cvLink, id, name, email)
 
         db
             .collection("seekers")

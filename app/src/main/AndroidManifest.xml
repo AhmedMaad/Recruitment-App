@@ -17,7 +17,7 @@
             android:name=".jobseeker.SeekerProfileActivity"
             android:exported="false" />
         <activity
-            android:name=".recruiter.AvailableEmployeesActivity"
+            android:name=".recruiter.AvailableSeekersActivity"
             android:exported="false" />
         <activity
             android:name=".company.job.JobActivity"
