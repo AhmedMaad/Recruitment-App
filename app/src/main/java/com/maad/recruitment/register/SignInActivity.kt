@@ -33,10 +33,10 @@ class SignInActivity : AppCompatActivity() {
         db = Firebase.firestore
 
         binding.signInBtn.setOnClickListener {
-            val email = "r@gmail.com"
-            val password = "123456"
-            //val email = binding.emailEt.text.toString()
-            //val password = binding.passwordEt.text.toString()
+            //val email = "r@gmail.com"
+            //val password = "123456"
+            val email = binding.emailEt.text.toString()
+            val password = binding.passwordEt.text.toString()
             if (email.isEmpty() || password.isEmpty())
                 Toast.makeText(this, "Missing Required Fields", Toast.LENGTH_SHORT).show();
             else {
@@ -91,6 +91,7 @@ class SignInActivity : AppCompatActivity() {
                     "Company" -> CompanyProfileActivity::class.java
                     else -> AvailableSeekersActivity::class.java
                 }
+                //Log.d("trace", "User: ${it.getString("userType")}")
                 startActivity(Intent(this, activityToOpen))
                 finish()
             }

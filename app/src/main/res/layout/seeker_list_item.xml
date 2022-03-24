@@ -85,6 +85,8 @@
                 tools:text="Pizza is the best" />
 
             <TextView
+                android:paddingEnd="0dp"
+                android:paddingStart="8dp"
                 android:id="@+id/seeker_mobile_tv"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -96,6 +98,8 @@
                 tools:text="+20111353" />
 
             <TextView
+                android:paddingEnd="0dp"
+                android:paddingStart="8dp"
                 android:id="@+id/seeker_email_tv"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -106,6 +110,8 @@
                 tools:text="a@gmail.com" />
 
             <TextView
+                android:paddingEnd="0dp"
+                android:paddingStart="8dp"
                 android:id="@+id/seeker_cv_tv"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

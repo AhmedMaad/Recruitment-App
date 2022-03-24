@@ -2,5 +2,5 @@
     <string name="app_name">Career Minds</string>
     <string name="missing_fields">Missing Required Fields</string>
     <string name="add">Add</string>
-    <string name="view_cv"><u>View CV</u></string>
+    <string name="view_cv"><u>Download CV</u></string>
 </resources>

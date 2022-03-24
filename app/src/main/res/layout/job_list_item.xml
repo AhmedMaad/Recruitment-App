@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="350dp"
+    android:layout_height="370dp"
     android:layout_margin="8dp"
     app:cardCornerRadius="24dp"
     tools:viewBindingIgnore="true">
@@ -63,7 +63,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="8dp"
             android:gravity="bottom">
 
             <TextView
@@ -80,7 +80,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
+                android:includeFontPadding="false"
                 android:textColor="@color/green"
                 android:textSize="24sp"
                 tools:text="$150" />
@@ -89,11 +89,10 @@
                 android:id="@+id/negotiable_cb"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="32dp"
-                android:layout_marginTop="16dp"
                 android:drawablePadding="8dp"
-                android:gravity="end"
+                android:gravity="end|center"
                 android:text="negotiable"
+                android:textSize="13sp"
                 tools:drawableEndCompat="@drawable/ic_unchecked" />
 
         </LinearLayout>
