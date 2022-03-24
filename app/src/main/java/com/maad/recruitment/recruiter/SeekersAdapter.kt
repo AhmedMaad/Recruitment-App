@@ -12,7 +12,7 @@ import com.bumptech.glide.Glide
 import com.maad.recruitment.R
 import com.maad.recruitment.jobseeker.SeekerModel
 
-class SeekersAdapter(val activity: Activity, val seekers: ArrayList<SeekerModel>) :
+class SeekersAdapter(val activity: Activity, var seekers: ArrayList<SeekerModel>) :
     RecyclerView.Adapter<SeekersAdapter.SeekersVH>() {
 
     class SeekersVH(view: View): RecyclerView.ViewHolder(view) {
@@ -55,5 +55,9 @@ class SeekersAdapter(val activity: Activity, val seekers: ArrayList<SeekerModel>
 
     override fun getItemCount() = seekers.size
 
+    fun filterList(filteredSeekers: ArrayList<SeekerModel>) {
+        seekers = filteredSeekers
+        notifyDataSetChanged()
+    }
 
 }
