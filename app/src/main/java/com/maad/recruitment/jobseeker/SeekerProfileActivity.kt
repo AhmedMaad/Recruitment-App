@@ -10,6 +10,7 @@ import android.util.Log
 import android.view.Gravity
 import android.view.View
 import android.widget.Toast
+import androidx.core.net.toUri
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.google.firebase.firestore.FirebaseFirestore
@@ -30,7 +31,7 @@ class SeekerProfileActivity : AppCompatActivity() {
     private lateinit var db: FirebaseFirestore
     private var imageUri: Uri? = null
     private var cvUri: Uri? = null
-    var pdfName: String? = null
+    private var pdfName: String? = null
     private lateinit var storage: FirebaseStorage
     private lateinit var seeker: SeekerModel
     private lateinit var name: String
@@ -84,23 +85,41 @@ class SeekerProfileActivity : AppCompatActivity() {
             startActivityForResult(i, 101)
         }
 
-        binding.uploadCvBtn.setOnClickListener{
+        binding.uploadCvBtn.setOnClickListener {
             val i = Intent(Intent.ACTION_OPEN_DOCUMENT)
             i.type = "application/pdf"
             startActivityForResult(i, 404)
         }
 
+        //if cv and image are not null, so the user chose both "first time"
+        //if image is not null but cv is null, this means two things
+        //* it is the first time that the user opens the app and chose image only
+        //* it is not the first time, and the user previously chose a cv and he is updating pp
+
         binding.doneIv.setOnClickListener {
             binding.progress.visibility = View.VISIBLE
             binding.doneIv.visibility = View.INVISIBLE
-            if (imageUri != null && cvUri != null)
+            if (imageUri != null && cvUri != null) {
+                //First time to open profile or updating both cv & pp
+                Log.d("trace", "First time to open profile or updating both cv & pp")
                 uploadImage()
-            else if(seeker.picture.isNotEmpty() && seeker.cv.isNotEmpty())
+            } else if (imageUri != null && cvUri == null && seeker.cv.isNotEmpty()) {
+                //user is updating pp
+                Log.d("trace", "user is updating pp only")
+                uploadImage()
+            } else if (cvUri != null && imageUri == null && seeker.picture.isNotEmpty()) {
+                //user is updating cv
+                Log.d("trace", "user is updating cv")
+                uploadCV(null)
+            } else if (imageUri == null && cvUri == null && seeker.cv.isNotEmpty() && seeker.picture.isNotEmpty()) {
+                //Updating profile data without updating image and cv
+                Log.d("trace", "Updating profile data without updating image and cv")
                 uploadProfile(null, null)
-            else{
+            } else {
+                Log.d("trace", "User didn't choose pp or cv")
                 binding.progress.visibility = View.INVISIBLE
                 binding.doneIv.visibility = View.VISIBLE
-                Toast.makeText(this, "Upload Picture & CV", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Choose Picture & CV", Toast.LENGTH_SHORT).show();
             }
 
         }
@@ -153,12 +172,16 @@ class SeekerProfileActivity : AppCompatActivity() {
             .addOnSuccessListener {
                 storageRef.downloadUrl.addOnSuccessListener {
                     Log.d("trace", "Image Link: $it")
-                    uploadCV(it)
+                    if (cvUri != null)
+                        uploadCV(it)
+                    else
+                        uploadProfile(null, it)
                 }
             }
     }
 
-    private fun uploadCV(imageUri: Uri) {
+    private fun uploadCV(imageUri: Uri?) {
+        Log.d("trace", "Uploading CV...")
         val now: Calendar = Calendar.getInstance()
         val y: Int = now.get(Calendar.YEAR)
         val m: Int = now.get(Calendar.MONTH) + 1 // Note: zero based!
@@ -177,6 +200,12 @@ class SeekerProfileActivity : AppCompatActivity() {
                     uploadProfile(it, imageUri)
                 }
             }
+            .addOnFailureListener {
+                binding.doneIv.visibility = View.VISIBLE
+                binding.progress.visibility = View.INVISIBLE
+                Toast.makeText(this, "Error uploading file", Toast.LENGTH_SHORT).show();
+                Log.d("trace", "CV Exception: ${it.localizedMessage}")
+            }
     }
 
     private fun uploadProfile(cvUri: Uri?, imageUri: Uri?) {
@@ -184,7 +213,8 @@ class SeekerProfileActivity : AppCompatActivity() {
         val experience = binding.experienceEt.text.toString()
         val phoneNumber = binding.phoneEt.text.toString()
         val track = binding.trackEt.text.toString()
-        val imageLink = imageUri?.toString() ?: seeker.picture
+        var imageLink: String? = null
+        imageLink = imageUri?.toString() ?: seeker.picture
         //Log.d("trace", "Image Link: $imageLink")
         val cvLink = cvUri?.toString() ?: seeker.cv
         //Log.d("trace", "CV Link: $cvLink")
